@@ -1,9 +1,10 @@
 var serverBaseUrl = "http://localhost:3000/operations";
 
 var rowHTML = ' <div class="row" id="objects-row">';
-var objectOuterHTML = '<div class="col-lg-3 col-md-6 text-center "> <div class="service-box">'
+var objectOuterHTML = '<div class="col-lg-3 col-md-6 text-center "> <div class="btn-group">'
 // ' <i class="fa fa-4x fa-lemon-o wow bounceIn "></i> <h3 >Object </h3> </div> </div>';
-var objectHTML = '<i id data-object-colorclass="fa fa-4x fa-lemon-o wow bounceIn myObject">'
+// var objectHTML = '<i id data-object-colorclass="fa fa-4x fa-lemon-o wow bounceIn myObject">'
+var objectHTML = '<button  id data-object-color type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 
 var allObjects = {};
 
@@ -43,7 +44,13 @@ function getAllObjects(){
   				result = objectHTML.replace('id', ' id ="'+ object._id +'"' );
   				result = result.replace('data-object-color', 'data-object-color="' + object.color + '"');
   				result = result.replace('>', ' style="color:'+ object.color + '" >');
-  				result += '</i>';
+  				// result += '</i>';
+
+  				result += '</button>';
+
+  				result += '<ul class="dropdown-menu"> <li><a onclick="changeColor(\"red\")">Change to Red </a></li> </ul>';
+
+
   				result += '</div> </div>';
   				template += result;
   				console.log(object._id);
@@ -63,6 +70,10 @@ function registerHandler(){
 
 		alert('clicked ' + event.target.id);
 	});
+}
+
+function changeColor(color, id){
+	console.log('color ' + color + ' id' + id);
 }
 
 getAllObjects();
