@@ -1,0 +1,13 @@
+{
+	"MongoLab": {
+		"database": {
+			"name": "rest-ui-assignment",
+			"url": "",
+			"port": 
+		},
+		"user": {
+			"username": "",
+			"password": ""
+		}
+	}
+}
